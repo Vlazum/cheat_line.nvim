@@ -11,12 +11,9 @@ let g:cheat_line_config = {
 \						  }
 let g:cheat_line_enabled = 0 
 let s:cheat_line_enabled = 0 
-"let g:cheat_line_config['highlight_group'] = 'Ignore' "'IncSearch'
 
 let s:line_num_1 = -1
 let s:line_num_2 = -1
-"let s:string = 'cheat_line'
-"let s:string_2 = 'cheat_line'
 let s:mark_ns = nvim_create_namespace('cheat_line')
 let s:mark_id_1 = 0
 let s:mark_id_2 = 0
@@ -29,20 +26,12 @@ function s:Refine_divider (divider)
 		else
 			if a:divider[0] == '	'
 				return '	'
-				"let l:result = []
-				"let l:iter_2 = 0
-				"while l:iter_2 < &l:tabstop
-				"	let l:result = add(l:result, ' ')
-				"	let l:iter_2 = l:iter_2 + 1
-				"endwhile
-				"return l:result
 			else
 				return ['D']
 			endif
 		endif
 	endif
 
-	"return [a:divider]
 	let l:result = []
 
 	let l:iter = 0
@@ -63,13 +52,7 @@ function s:Refine_divider (divider)
 			endif
 
 	
-			let l:result = add(l:result, "	")
-			"let l:iter_2 = 0
-			"while l:iter_2 < &l:tabstop
-			"	let l:result = add(l:result, " ")
-			"	let l:iter_2 = l:iter_2 + 1
-			"endwhile
-	
+			let l:result = add(l:result, "	")	
 		else 
 
 			if a:divider[l:iter] == " "
