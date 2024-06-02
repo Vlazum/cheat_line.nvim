@@ -1,8 +1,8 @@
 # cheat_line.nvim
 
-Cheat line is a very simple neovim plugin that helps with navigating within the currently selected line.Cheat 
-line consists of two separate lines by default located above the cursor line.They point to the beginning of 
-each word within that line using relative numbering.
+Cheat line is a very simple vimscript based neovim plugin that helps with navigating within the currently 
+selected line.Cheat line consists of two separate lines by default located above the cursor line.They 
+point to the beginning of each word within that line using relative numbering.
 
 ![Screenshot from 2024-06-01 15-56-11](https://github.com/Vlazum/cheat_line.nvim/assets/121399271/ab674ef0-7e8e-4915-b3c2-d6e789d89a13)
 
