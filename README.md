@@ -25,7 +25,9 @@ All of the adjustable properties are located in `g:cheat_line_config` dictionary
 
 `L1_highlight_group`      - defines the highlight group of the first cheat line (default: 'Ignore')
 
-`L2_highlight_group`      - defines the highlight group of the second cheat line (default: 'Ignore')
+`L2_highlight_group`      - defines the highlight group of the second cheat line (default: 'Ignore') 
+
+> you can run `:so $VIMRUNTIME/syntax/hitest.vim` command to find more highlight groups
 
 `L1_relative_pos`         - defines position of the first line relative to the cursor line (default: -1)
 
