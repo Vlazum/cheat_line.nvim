@@ -21,7 +21,7 @@ All of the adjustable properties are located in `g:cheat_line_config` dictionary
 
 ### properties:
 
-`points_to_first_char`    - if set to 1 then points to the first character in each word of a cursor line. Points to the last character otherwise (default: 1)
+`points_to_first_char`    - if set to 1 points to the first character in each word of a cursor line. Points to the last character otherwise (default: 1)
 
 `L1_highlight_group`      - defines the highlight group of the first cheat line (default: 'Ignore')
 
