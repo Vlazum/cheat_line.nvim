@@ -409,7 +409,7 @@ function s:Generate_cheat_lines(line_num)
 	return l:result
 endfunction
 
-function g:Update_cheat_line()
+function cheat_line#Update_cheat_line()
 
 		echo 'l1: ' .. s:line_num_1 .. ';     l2: ' .. s:line_num_2
 		let s:line_num_1 = nvim_win_get_cursor(0)[0]-1 + g:cheat_line_config['L1_relative_pos']
@@ -467,12 +467,12 @@ function g:Update_cheat_line()
 
 endfunction
 
-function g:Toggle_cheat_line()
+function cheat_line#Toggle_cheat_line()
 	if (s:cheat_line_enabled == 0)
 
 		augroup Cheatline
 			autocmd!
-			autocmd CursorMoved * call Update_cheat_line()
+			autocmd CursorMoved * call cheat_line#Update_cheat_line()
 		augroup END
 
 		let s:line_num_1 = nvim_win_get_cursor(0)[0]-1 + g:cheat_line_config['L1_relative_pos']
@@ -542,13 +542,13 @@ function g:Toggle_cheat_line()
 
 endfunction
 
-function Change_pointing_mode()
+function cheat_line#Change_pointing_mode()
 	if g:cheat_line_config['point_to_first_char'] == 0
 		let g:cheat_line_config['point_to_first_char'] = 1
 	else
 		let g:cheat_line_config['point_to_first_char'] = 0
 	endif
 	if (s:cheat_line_enabled == 1)
-		call g:Update_cheat_line()
+		call cheat_line#Update_cheat_line()
 	endif
 endfunction
