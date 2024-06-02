@@ -13,26 +13,28 @@ All of the adjustable properties are located in `g:cheat_line_config` dictionary
 
 ### Properties:
 
-`points_to_first_char` - if set to 1 then points to the first character in each word of a cursor line. Points to the last character otherwise (default: 1)
+`points_to_first_char`    - if set to 1 then points to the first character in each word of a cursor line. Points to the last character otherwise (default: 1)
 
-`L1_highlight_group`   - defines the highilight group of the first cheat line (default: 'Ignore')
+`L1_highlight_group`      - defines the highilight group of the first cheat line (default: 'Ignore')
 
-`L2_highlight_group`   - defines the highilight group of the second cheat line (default: 'Ignore')
+`L2_highlight_group`      - defines the highilight group of the second cheat line (default: 'Ignore')
 
-`L1_reletive_pos`   - defines positoin of the first line relative to the cursor line (default: -1)
+`L1_reletive_pos`         - defines positoin of the first line relative to the cursor line (default: -1)
 
-`L2_reletive_pos`   - defines positoin of the second line relative to the cursor line (default: -2)
+`L2_reletive_pos`         - defines positoin of the second line relative to the cursor line (default: -2)
 
-`L1_pos_if_to_high`   - defines positoin of the first line if it has gone above the line 0 (default: 1)
+`L1_pos_if_to_high`       - defines positoin of the first line if it has gone above the line 0 (default: 1)
 
-`L2_pos_if_to_high`   - defines positoin of the second line if it has gone above the line 0 (default: 2)
+`L2_pos_if_to_high`       - defines positoin of the second line if it has gone above the line 0 (default: 2)
 
-`L1_pos_if_to_low`   - defines positoin of the first line if it has gone below the last line in the file (default: -1)
+`L1_pos_if_to_low`        - defines positoin of the first line if it has gone below the last line in the file (default: -1)
 
-`L2_pos_if_to_low`   - defines positoin of the second line if it has gone below the last line in the file (default: -2)
+`L2_pos_if_to_low`        - defines positoin of the second line if it has gone below the last line in the file (default: -2)
 
-### Functions:
+### Commands:
 
-`Toggle_cheat_line()` - toggles the cheat line
+`ToggleCheatLine`      - toggles the cheat line
 
-`Change_pointing_mode()` - flips the value of `points_to_first_char`
+`ChangePointingMode`   - flips the value of `points_to_first_char`
+
+`UpdateCheatLine`      - updates the cheat line
