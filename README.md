@@ -21,7 +21,7 @@ All of the adjustable properties are located in `g:cheat_line_config` dictionary
 
 ### properties:
 
-| Property name          | Descriptoin                                                                                                     | Default value |                              
+| Property name          | Description                                                                                                     | Default value |                              
 | ---------------------- | --------------------------------------------------------------------------------------------------------------- | ------------- |
 | `points_to_first_char` | if set to 1 points to the first character in each word of a cursor line. Points to the last character otherwise | 1             |
 | `L1_highlight_group`   | defines the highlight group of the first cheat line                                                             | 'Ignore'      |
@@ -32,4 +32,4 @@ All of the adjustable properties are located in `g:cheat_line_config` dictionary
 | `L2_pos_if_to_high`    | defines position of the second line if it has gone above the line 0                                             | 2             |                               
 | `L1_pos_if_to_low`     | defines position of the first line if it has gone below the last line in the file                               | -1            |
 | `L2_pos_if_to_low`     | defines position of the second line if it has gone below the last line in the file                              | -2            |
-> *you can run `:so $VIMRUNTIME/syntax/hitest.vim` command to find more highlight group*
+> *you can run `:so $VIMRUNTIME/syntax/hitest.vim` command to find more highlight groups*
