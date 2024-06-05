@@ -4,10 +4,10 @@ let g:cheat_line_config = {
 \							'L2_highlight_group' : 'Ignore',
 \						    'L1_relative_pos' : -1,	
 \						    'L2_relative_pos' : -2,	
-\						    'L1_pos_if_to_high' : 1,	
-\						    'L2_pos_if_to_high' : 2,	
-\						    'L1_pos_if_to_low' : -1,	
-\						    'L2_pos_if_to_low' : -2,	
+\						    'L1_pos_if_too_high' : 2,	
+\						    'L2_pos_if_too_high' : 1,	
+\						    'L1_pos_if_too_low' : -1,	
+\						    'L2_pos_if_too_low' : -2,	
 \						  }
 let g:cheat_line_enabled = 0 
 let s:cheat_line_enabled = 0 
