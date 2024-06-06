@@ -2,7 +2,7 @@ let g:cheat_line_config = {
 \							'point_to_first_char' : 1,
 \							'L1_highlight_group' : 'Ignore',
 \							'L2_highlight_group' : 'Ignore',
-\						    'L1_relative_pos' : -1,	
+\						    'L1_relative_pos' : -1,
 \						    'L2_relative_pos' : -2,	
 \						    'L1_pos_if_too_high' : 2,	
 \						    'L2_pos_if_too_high' : 1,	
@@ -15,7 +15,6 @@ let s:cheat_line_enabled = 0
 let s:mark_ns = nvim_create_namespace('cheat_line')
 let s:mark_id_1 = 0
 let s:mark_id_2 = 0
-
 
 function s:Refine_divider (divider)
 	if len(a:divider) == 1
@@ -384,44 +383,23 @@ function s:Generate_cheat_lines(line_num)
 	
 	if (strchars(l:result_1) != 0)
 
-		let l:iter = strchars(result_1)
-		if l:cursor_on_tab == 1
-			let l:iter = l:iter - &l:tabstop + 1
-		endif
+		let l:iterations = strdisplaywidth(getline(s:line_num_1+1))
+		let l:iter = strdisplaywidth(l:result_1)
 
-
-		let l:ln = getline(s:line_num_1+1)
-		
-		let l:iterations = strchars(l:ln)
-		
-		while l:iter < l:iterations
-			if l:ln[l:iter] == '	'
-				let result_1 = result_1 .. l:ln[l:iter]
-			else
-				let result_1 = result_1 .. ' '
-			endif
+		while l:iter < l:iterations 
+			let l:result_1 = l:result_1 .. ' '
 			let l:iter = l:iter + 1
 		endwhile
-		
-		let l:iter = strchars(result_2)
-		if l:cursor_on_tab == 1
-			let l:iter = l:iter - &l:tabstop + 1
-		endif
 
-		let l:ln = getline(s:line_num_2+1)
-		
-		let l:iterations = strchars(l:ln)
-		
+		let l:iterations = strdisplaywidth(getline(s:line_num_2+1))
+		let l:iter = strdisplaywidth(l:result_2)
+
 		while l:iter < l:iterations
-			if l:ln[l:iter] == '	'
-				let result_2 = result_2 .. l:ln[l:iter]
-			else
-				let result_2 = result_2 .. ' '
-			endif
+			let l:result_2 = l:result_2 .. ' '
 			let l:iter = l:iter + 1
 		endwhile
+
 	endif
-
 
 	let l:result = [l:result_1, l:result_2]
 
@@ -430,18 +408,12 @@ endfunction
 
 function cheat_line#Update_cheat_line()
 
-		echo 'l1: ' .. s:line_num_1 .. ';     l2: ' .. s:line_num_2
 		let s:line_num_1 = nvim_win_get_cursor(0)[0]-1 + g:cheat_line_config['L1_relative_pos']
 		let s:line_num_2 =nvim_win_get_cursor(0)[0]-1 + g:cheat_line_config['L2_relative_pos']
 		let l:clmn_num = nvim_win_get_cursor(0)[1]
 
 		call nvim_buf_del_extmark(0, s:mark_ns, s:mark_id_1)
 		call nvim_buf_del_extmark(0, s:mark_ns, s:mark_id_2)
-
-		let l:res = s:Generate_cheat_lines (nvim_win_get_cursor(0)[0])
-		let s:string_1 = l:res[0]
-		let s:string_2 = l:res[1]
-
 
 		if s:line_num_1 < 0
 			let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_too_high']
@@ -459,6 +431,9 @@ function cheat_line#Update_cheat_line()
 			endif
 		endif
 
+		let l:res = s:Generate_cheat_lines (nvim_win_get_cursor(0)[0])
+		let s:string_1 = l:res[0]
+		let s:string_2 = l:res[1]
 
 		let s:mark_id_1 = nvim_buf_set_extmark
 					\(
@@ -499,11 +474,6 @@ function cheat_line#Toggle_cheat_line()
 
 		let l:clmn_num = nvim_win_get_cursor(0)[1]
 
-		let l:res = s:Generate_cheat_lines (nvim_win_get_cursor(0)[0])
-		let s:string_1 = l:res[0]
-		let s:string_2 = l:res[1]
-
-
 		if s:line_num_1 < 0
 			let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_too_high']
 		else
@@ -520,6 +490,9 @@ function cheat_line#Toggle_cheat_line()
 			endif
 		endif
 
+		let l:res = s:Generate_cheat_lines (nvim_win_get_cursor(0)[0])
+		let s:string_1 = l:res[0]
+		let s:string_2 = l:res[1]
 
 		"'virt_text_win_col' : l:clmn_num,
 		let s:mark_id_1 = nvim_buf_set_extmark
