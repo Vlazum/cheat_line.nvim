@@ -12,9 +12,6 @@ let g:cheat_line_config = {
 let g:cheat_line_enabled = 0 
 let s:cheat_line_enabled = 0 
 
-"let s:line_num_1 = -1
-"let s:line_num_2 = -1
-
 let s:mark_ns = nvim_create_namespace('cheat_line')
 let s:mark_id_1 = 0
 let s:mark_id_2 = 0
@@ -301,6 +298,19 @@ function s:Generate_cheat_lines(line_num)
 
 
 		let l:cursor_position = nvim_win_get_cursor(0)[1]
+
+		let l:cursor_on_tab = 0
+		if l:segmentated_string[l:cursor_position] == '	'
+			let l:cursor_on_tab = 1
+			"call insert(l:segmentated_string, l, l:cursor_position)
+			let l:iter = 1
+			while l:iter < &l:tabstop
+				call insert(l:segmentated_string, ' ', l:cursor_position)
+				let l:iter = l:iter + 1
+				let l:cursor_position = l:cursor_position + 1
+			endwhile
+		endif
+
 		let l:segmentated_string[l:cursor_position] = '^'
 
 		let l:iter = 0
@@ -375,13 +385,18 @@ function s:Generate_cheat_lines(line_num)
 	if (strchars(l:result_1) != 0)
 
 		let l:iter = strchars(result_1)
+		if l:cursor_on_tab == 1
+			let l:iter = l:iter - &l:tabstop + 1
+		endif
+
+
 		let l:ln = getline(s:line_num_1+1)
 		
 		let l:iterations = strchars(l:ln)
 		
 		while l:iter < l:iterations
 			if l:ln[l:iter] == '	'
-				let result_1 = result_1 .. '	'
+				let result_1 = result_1 .. l:ln[l:iter]
 			else
 				let result_1 = result_1 .. ' '
 			endif
@@ -389,13 +404,17 @@ function s:Generate_cheat_lines(line_num)
 		endwhile
 		
 		let l:iter = strchars(result_2)
+		if l:cursor_on_tab == 1
+			let l:iter = l:iter - &l:tabstop + 1
+		endif
+
 		let l:ln = getline(s:line_num_2+1)
 		
 		let l:iterations = strchars(l:ln)
 		
 		while l:iter < l:iterations
 			if l:ln[l:iter] == '	'
-				let result_2 = result_2 .. '	'
+				let result_2 = result_2 .. l:ln[l:iter]
 			else
 				let result_2 = result_2 .. ' '
 			endif
@@ -425,18 +444,18 @@ function cheat_line#Update_cheat_line()
 
 
 		if s:line_num_1 < 0
-			let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_to_high']
+			let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_too_high']
 		else
 			if s:line_num_1 >= line('$')
-				let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_to_low']
+				let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_too_low']
 			endif
 		endif
 
 		if s:line_num_2 < 0
-			let s:line_num_2 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L2_pos_if_to_high']
+			let s:line_num_2 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L2_pos_if_too_high']
 		else
 			if s:line_num_2 >= line('$')
-				let s:line_num_2 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L2_pos_if_to_low']
+				let s:line_num_2 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L2_pos_if_too_low']
 			endif
 		endif
 
@@ -486,18 +505,18 @@ function cheat_line#Toggle_cheat_line()
 
 
 		if s:line_num_1 < 0
-			let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_to_high']
+			let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_too_high']
 		else
 			if s:line_num_1 >= line('$')
-				let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_to_low']
+				let s:line_num_1 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L1_pos_if_too_low']
 			endif
 		endif
 
 		if s:line_num_2 < 0
-			let s:line_num_2 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L2_pos_if_to_high']
+			let s:line_num_2 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L2_pos_if_too_high']
 		else
 			if s:line_num_2 >= line('$')
-				let s:line_num_2 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L2_pos_if_to_low']
+				let s:line_num_2 = nvim_win_get_cursor(0)[0] - 1 + g:cheat_line_config['L2_pos_if_too_low']
 			endif
 		endif
 
