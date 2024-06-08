@@ -1,6 +1,6 @@
 " name: 	Cheat_line.nvim
 " descriptoin: 	helps you naivgate through the selected line 
-" last change: 	3 June 2024
+" last change: 	8 June 2024
 " maintainter:	Vlazm 'https://github.com/Vlazum'
 
 if exists("g:loaded_cheat_line")
