@@ -28,8 +28,8 @@ All of the adjustable properties are located in `g:cheat_line_config` dictionary
 | `L2_highlight_group`   | defines the highlight group of the second cheat line                                                            | 'Ignore'      |
 | `L1_relative_pos`      | defines position of the first line relative to the cursor line                                                  | -1            |
 | `L2_relative_pos`      | defines position of the second line relative to the cursor line                                                 | -2            |
-| `L1_pos_if_too_high`    | defines position of the first line if it has gone above the line 0                                             | 1             |
-| `L2_pos_if_too_high`    | defines position of the second line if it has gone above the line 0                                            | 2             |        
+| `L1_pos_if_too_high`    | defines position of the first line if it has gone above the line 0                                             | 2             |
+| `L2_pos_if_too_high`    | defines position of the second line if it has gone above the line 0                                            | 1             |        
 | `L1_pos_if_too_low`     | defines position of the first line if it has gone below the last line in the file                              | -1            |
 | `L2_pos_if_too_low`     | defines position of the second line if it has gone below the last line in the file                             | -2            |
 > *you can run `:so $VIMRUNTIME/syntax/hitest.vim` command to find more highlight groups*
