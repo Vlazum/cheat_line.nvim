@@ -17,6 +17,7 @@ point to the beginning of each word within that line using relative numbering.
 
 ## setup
 The cheat line does not require any setup to run properly, however if you would like to you could change some things:
+
 All of the adjustable properties are located in `g:cheat_line_config` dictionary.
 
 ### properties:
