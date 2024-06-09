@@ -1,4 +1,4 @@
-# cheat_line.nvim
+# cheat-line.nvim
 
 Cheat line is a very simple vimscript based neovim plugin that helps with navigating within the currently 
 selected line.Cheat line consists of two separate lines by default located above the cursor line.They 
