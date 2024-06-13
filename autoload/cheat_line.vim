@@ -343,41 +343,76 @@ function s:Generate_cheat_lines(line_num)
 		let l:skip_1 = 0
 		let l:skip_2 = 0
 
+		"echo segmentated_string
+
 		while l:iter < l:iterations
 			if (l:segmentated_string[l:iter] == l:seek_char) || (l:segmentated_string[l:iter] == 'D') || (l:segmentated_string[l:iter] == '^')
+				let l:tmp_iter = s:Get_number_of_digits_in_a_number(abs(l:entry_points[l:iter_2] - l:cursor_point))
+				let l:skip_1 = l:skip + l:tmp_iter - 1
 				if (l:iter_2 % 2 != 0)
-					let l:skip_1 = s:Get_number_of_digits_in_a_number(abs(l:entry_points[l:iter_2] - l:cursor_point))-1
 					let l:result_1 = l:result_1 .. string(abs(l:entry_points[l:iter_2] - l:cursor_point))
-					let l:result_2 = l:result_2 .. ' '
+
+					while tmp_iter > 0
+						let l:result_2 = l:result_2  .. ' '
+						let l:tmp_iter = l:tmp_iter - 1 
+					endwhile
 				else
-					let l:skip_2 = s:Get_number_of_digits_in_a_number(abs(l:entry_points[l:iter_2] - l:cursor_point))-1
 					let l:result_2 = l:result_2 .. string(abs(l:entry_points[l:iter_2] - l:cursor_point))
-					let l:result_1 = l:result_1 .. ' '
-				endif
-				let l:iter_2 = l:iter_2 + 1
-			else
-				if l:skip_2 == 0
-					if l:segmentated_string[l:iter] == '	'
-						let l:result_2 = l:result_2 .. '	'
-					else
-						let l:result_2 = l:result_2 .. ' '
-					endif
-				else
-					let l:skip_2 = l:skip_2 - 1
+
+					while tmp_iter > 0
+						let l:result_1 = l:result_1  .. ' '
+						let l:tmp_iter = l:tmp_iter - 1 
+					endwhile
 				endif
 
-				if l:skip_1 == 0
-					if l:segmentated_string[l:iter] == '	'
-						let l:result_1 = l:result_1 .. '	'
-					else
-						let l:result_1 = l:result_1 .. ' '
-					endif
-				else
-					let l:skip_1 = l:skip_1 - 1
+				let l:iter_2 = l:iter_2 + 1
+			else
+				if l:segmentated_string[l:iter] == '	'
+					let l:result_1 = l:result_1 .. '	'
+					let l:result_2 = l:result_2 .. '	'
+				else 
+					let l:result_1 = l:result_1 .. ' '
+					let l:result_2 = l:result_2 .. ' '
 				endif
 			endif
 			let l:iter = l:iter + 1
 		endwhile
+
+		"while l:iter < l:iterations
+		"	if (l:segmentated_string[l:iter] == l:seek_char) || (l:segmentated_string[l:iter] == 'D') || (l:segmentated_string[l:iter] == '^')
+		"		if (l:iter_2 % 2 != 0)
+		"			let l:skip_1 = s:Get_number_of_digits_in_a_number(abs(l:entry_points[l:iter_2] - l:cursor_point))-1
+		"			let l:result_1 = l:result_1 .. string(abs(l:entry_points[l:iter_2] - l:cursor_point))
+		"			let l:result_2 = l:result_2 .. ' '
+		"		else
+		"			let l:skip_2 = s:Get_number_of_digits_in_a_number(abs(l:entry_points[l:iter_2] - l:cursor_point))-1
+		"			let l:result_2 = l:result_2 .. string(abs(l:entry_points[l:iter_2] - l:cursor_point))
+		"			let l:result_1 = l:result_1 .. ' '
+		"		endif
+		"		let l:iter_2 = l:iter_2 + 1
+		"	else
+		"		if l:skip_2 == 0
+		"			if l:segmentated_string[l:iter] == '	'
+		"				let l:result_2 = l:result_2 .. '	'
+		"			else
+		"				let l:result_2 = l:result_2 .. ' '
+		"			endif
+		"		else
+		"			let l:skip_2 = l:skip_2 - 1
+		"		endif
+		"
+		"		if l:skip_1 == 0
+		"			if l:segmentated_string[l:iter] == '	'
+		"				let l:result_1 = l:result_1 .. '	'
+		"			else
+		"				let l:result_1 = l:result_1 .. ' '
+		"			endif
+		"		else
+		"			let l:skip_1 = l:skip_1 - 1
+		"		endif
+		"	endif
+		"	let l:iter = l:iter + 1
+		"endwhile
 
 	endif
 	
