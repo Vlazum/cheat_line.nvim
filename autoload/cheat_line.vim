@@ -467,6 +467,7 @@ function cheat_line#Toggle_cheat_line()
 		augroup Cheatline
 			autocmd!
 			autocmd CursorMoved * call cheat_line#Update_cheat_line()
+			autocmd CursorMovedI * call cheat_line#Update_cheat_line()
 		augroup END
 
 		let s:line_num_1 = nvim_win_get_cursor(0)[0]-1 + g:cheat_line_config['L1_relative_pos']
