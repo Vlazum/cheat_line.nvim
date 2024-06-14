@@ -16,13 +16,12 @@ point to the beginning of each word within that line using relative numbering.
 `UpdateCheatLine`      - updates the cheat line
 
 ## setup
-The cheat line does not require any setup to run properly, however if you would like to you could change some things:
+Cheat line can function properly without setup however some properties can be adjusted.
+For changing properties use `cheat_line#config` function. The functoin takes dictionary of properties you would like to change and values that you would like to asign to them. Example: `call cheat_line#config({'points_to_first_char' : 0})`
 
-All of the adjustable properties are located in `g:cheat_line_config` dictionary.
+### adjustable properties:
 
-### properties:
-
-| Property name          | Description                                                                                                     | Default value |                              
+| Property name          | Description                                                                                                     | Default value |        
 | ---------------------- | --------------------------------------------------------------------------------------------------------------- | ------------- |
 | `points_to_first_char` | if set to 1 points to the first character in each word of a cursor line. Points to the last character otherwise | 1             |
 | `L1_highlight_group`   | defines the highlight group of the first cheat line                                                             | 'Ignore'      |
