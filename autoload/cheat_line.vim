@@ -9,6 +9,15 @@ let g:cheat_line_config = {
 \						    'L1_pos_if_too_low' : -1,	
 \						    'L2_pos_if_too_low' : -2,	
 \						  }
+
+function cheat_line#Setup (input_config)
+	for key in keys(g:cheat_line_config)
+		if has_key(a:input_config, key)
+			let g:cheat_line_config[key] = a:input_config[key]
+		endif
+	endfor
+endfunction
+
 let g:cheat_line_enabled = 0 
 let s:cheat_line_enabled = 0 
 
